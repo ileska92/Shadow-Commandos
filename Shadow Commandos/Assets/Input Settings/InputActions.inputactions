@@ -1,14 +1,14 @@
 {
-    "name": "InputActionAsset",
+    "name": "InputActions",
     "maps": [
         {
             "name": "Player",
-            "id": "a1eec62d-dfbc-4b2f-a63d-f931aaa19ac8",
+            "id": "60e8b01b-9595-4136-9059-4b3c8ab48f8e",
             "actions": [
                 {
                     "name": "Move",
                     "type": "Button",
-                    "id": "0396c2dd-ea61-45b9-a920-418aa934d8ff",
+                    "id": "3ead2a6f-d0a2-45b8-ba3e-10d8ca4faca7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -16,15 +16,31 @@
                 {
                     "name": "Jump",
                     "type": "Button",
-                    "id": "e5fa5d8c-2fc7-4c68-a1f0-f5c3ecc891aa",
+                    "id": "4faa21af-1612-4134-8e37-bbe7751244d6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "Attack",
+                    "name": "EnterFunction",
                     "type": "Button",
-                    "id": "07f3013d-7eb4-4573-8e04-36892e367f33",
+                    "id": "cce70773-bbab-46c9-b88d-78ec7b4703cf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "7e2ee2cd-57b8-43f5-8826-f7bdc67e548a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Run",
+                    "type": "Button",
+                    "id": "7de60d51-40e6-4cea-875e-04c108c0fc9a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -32,7 +48,7 @@
                 {
                     "name": "Look",
                     "type": "PassThrough",
-                    "id": "4597b55d-7aa9-451e-9477-a4233cdab881",
+                    "id": "b315974f-65f1-4294-90c1-8c0ec2a8695e",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
@@ -41,7 +57,7 @@
             "bindings": [
                 {
                     "name": "WASD",
-                    "id": "de51b59d-78ff-4900-baba-7df552df9765",
+                    "id": "f8a8e4e0-483f-41b1-8e68-4fe2c3f46886",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -52,7 +68,7 @@
                 },
                 {
                     "name": "up",
-                    "id": "dc02d72d-b5b9-48e6-95ec-f4e8e6acfa76",
+                    "id": "a614b95c-9f9c-4baf-86ec-97d625a60c8b",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -63,7 +79,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "0c384a1e-6368-4a39-aa94-605fe6fc7224",
+                    "id": "27e7fa8a-8776-4b1f-8123-4d56660cf23e",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -74,7 +90,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "cc342d3e-5d93-400c-b62e-47ebaf350d32",
+                    "id": "d9a422a7-1f83-40fc-be49-8eb95c881e12",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -85,7 +101,7 @@
                 },
                 {
                     "name": "right",
-                    "id": "4c130388-d0b0-4cd2-9fe1-3335fb502c64",
+                    "id": "9aa5e718-f611-4a5c-8b3b-dc368c6d3721",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -96,7 +112,7 @@
                 },
                 {
                     "name": "",
-                    "id": "e402e363-dab6-4963-ad42-0d7358d4f917",
+                    "id": "e89feb12-7c55-4315-869f-924b8c9eed3a",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
@@ -107,18 +123,40 @@
                 },
                 {
                     "name": "",
-                    "id": "ce880527-ae87-4c15-a748-3e6cb83649c4",
-                    "path": "<Mouse>/leftButton",
+                    "id": "b2d5987e-89b3-48ee-bc2b-fb53c03917f6",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "EnterFunction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "2f3aa782-e55b-4b3a-a9a9-c95118bccc25",
+                    "id": "f4bfb38d-2fb0-42ed-8a39-3eb510221356",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76a839c3-454e-4517-bce7-682ae757bb1f",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "54ac76b6-718a-4821-9fe4-b8cb051d26b6",
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
