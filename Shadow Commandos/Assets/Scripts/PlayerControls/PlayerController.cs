@@ -2,123 +2,111 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    // Input
-    private GameInputActions playerActionAsset;
-    private InputAction move;
+    /****** https://www.youtube.com/watch?v=F5a4Xo6ijLE ******/
 
-    // Movement
-    private Rigidbody rb;
-    [SerializeField]
-    private float movementForce = 0.1f;
+    Rigidbody rb;
+    Animator anim;
 
-    // [SerializeField]
-    // private float jumpForce = 5f;
+    public float speed = 10;
 
-    [SerializeField]
-    private float maxSpeed = 5f;
-    private Vector3 forceDirection = Vector3.zero;
+    Vector3 lookPos;
 
-    // Camera
-    [SerializeField]
-    private Camera playerCamera;
+    Transform cam;
+    Vector3 camForward;
+    Vector3 move;
+    Vector3 moveInput;
 
-    private Animator animator;
+    float forwardAmount;
+    float turnAmount;
 
-    private void Awake()
+    void Start()
     {
-        rb = this.GetComponent<Rigidbody>();
-        playerActionAsset = new GameInputActions();
-        animator = this.GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
+        cam = Camera.main.transform;
     }
 
-    private void OnEnable()
+    // Mouse look position
+    private void Update()
     {
-        // playerActionAsset.Player.Jump.started += DoJump;
-        playerActionAsset.Player.Shoot.started += DoShoot;
-        move = playerActionAsset.Player.Move;
-        playerActionAsset.Player.Enable();
-    }
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
-    private void OnDisable()
-    {
-        // playerActionAsset.Player.Jump.started -= DoJump;
-        playerActionAsset.Player.Shoot.started -= DoShoot;
-        playerActionAsset.Player.Disable();
-    }
-
-    private void FixedUpdate()
-    {
-        forceDirection += move.ReadValue<Vector2>().x * GetCameraRight(playerCamera) * movementForce;
-        forceDirection += move.ReadValue<Vector2>().y * GetCameraForward(playerCamera) * movementForce;
-
-        rb.AddForce(forceDirection, ForceMode.Impulse);
-        forceDirection = Vector3.zero;
-
-        // Jump Code
-        /*
-        if (rb.velocity.y < 0f)
-            rb.velocity -= Vector3.down * Physics.gravity.y * Time.fixedDeltaTime;
-        
-        Vector3 horizontalVelocity = rb.velocity;
-        horizontalVelocity.y = 0;
-        if (horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed)
-            rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
-        */
-
-        LookAt();
-    }
-
-    private void LookAt()
-    {
-        Vector3 direction = rb.velocity;
-        direction.y = 0f;
-
-        if (move.ReadValue<Vector2>().sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)
-            this.rb.rotation = Quaternion.LookRotation(direction, Vector3.up);
-        else
-            rb.angularVelocity = Vector3.zero;
-    }
-
-    private Vector3 GetCameraRight(Camera playerCamera)
-    {
-        Vector3 right = playerCamera.transform.right;
-        right.y = 0;
-        return right.normalized;
-    }
-
-    private Vector3 GetCameraForward(Camera playerCamera)
-    {
-        Vector3 forward = playerCamera.transform.forward;
-        forward.y = 0;
-        return forward.normalized;
-    }
-
-    // Jump Code
-    /*
-    private void DoJump(InputAction.CallbackContext obj)
-    {
-        if(IsGrounded())
+        if (Physics.Raycast(ray, out hit, 100))
         {
-            forceDirection += Vector3.up * jumpForce;
+            lookPos = hit.point;
         }
+
+        Vector3 lookDir = lookPos - transform.position;
+        lookDir.y = 0;
+
+        transform.LookAt(transform.position + lookDir, Vector3.up);
     }
 
-    private bool IsGrounded()
+    // Player Movement
+    void FixedUpdate()
     {
-        Ray ray = new Ray(this.transform.position + Vector3.up * 0.25f, Vector3.down);
-        if (Physics.Raycast(ray, out RaycastHit hit, 0.3f))
-            return true;
+        float hor = Input.GetAxis("Horizontal");
+        float ver = Input.GetAxis("Vertical");
+
+        /* FIX FORWARD ANIM */
+        if(cam != null)
+        {
+            camForward = Vector3.Scale(cam.up, new Vector3(1, 0, 1)).normalized;
+            move = ver * camForward + hor * cam.right;
+        }
         else
-            return false;
-    }
-    */
+        {
+            move = ver * Vector3.forward + hor * Vector3.right;
+        }
 
-    private void DoShoot(InputAction.CallbackContext obj)
+        if(move.magnitude > 1)
+        {
+            move.Normalize();
+        }
+
+        Move(move);
+
+        /* FIRE WITH MOUSE */
+        if(Input.GetButtonDown("Fire1"))
+        {
+            anim.SetTrigger("Shoot");
+        }
+
+        /*  MOVE PLAYER WITH RB */
+        Vector3 playerMove = new Vector3(hor, 0, ver);
+        //rb.AddForce(playerMove * speed / Time.deltaTime);
+        //rb.AddForce(playerMove * speed / Time.deltaTime, ForceMode.Acceleration);
+        rb.velocity = playerMove * speed;
+    }
+
+    private void Move(Vector3 move)
     {
-        animator.SetTrigger("shoot");
+        if(move.magnitude > 1)
+        {
+            move.Normalize();
+        }
+
+        this.moveInput = move;
+
+        ConvertMoveInput();
+        UpdateAnimator();
+    }
+
+    private void UpdateAnimator()
+    {
+        anim.SetFloat("Forward", forwardAmount, 0.01f, Time.deltaTime);
+        anim.SetFloat("Turn", turnAmount, 0.01f, Time.deltaTime);
+    }
+
+    private void ConvertMoveInput()
+    {
+        Vector3 localMove = transform.InverseTransformDirection(moveInput);
+        turnAmount = localMove.x;
+
+        forwardAmount = localMove.z;
     }
 }
