@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 168826356}
   m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: cff0965c62b354b43afaa1e6aeb0b877, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 985f293a8f36bfe4e9055ee8f83dd0a5, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -435,7 +435,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.7
     m_Bias: 0.02
     m_NormalBias: 0.1
     m_NearPlane: 0.1
@@ -483,13 +483,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168826355}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.25509596, y: -0.47561428, z: 0.34553212, w: 0.76767486}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 46.083, y: -53, z: 24.52}
 --- !u!1 &252642383
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,16 +2782,24 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1168877354, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1168877356}
+    - target: {fileID: 1168877354, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
       propertyPath: runSpeed
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1168877354, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
       propertyPath: lerpingSpeed
-      value: 1
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2446721847586339972, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
       propertyPath: m_Drag
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446721847586339972, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 7433080239256785249, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
       propertyPath: m_RootOrder
