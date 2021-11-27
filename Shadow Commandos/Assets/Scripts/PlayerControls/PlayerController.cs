@@ -10,17 +10,20 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     Animator anim;
 
-    public float speed = 10;
-
-    Vector3 lookPos;
-
     Transform cam;
+    Vector3 lookPos;
     Vector3 camForward;
     Vector3 move;
     Vector3 moveInput;
 
     float forwardAmount;
     float turnAmount;
+
+    /* Player speed */
+    public float speed = 10;
+
+    public float force;
+    public float punchCoolDown = 1f;
 
     void Start()
     {
@@ -32,10 +35,12 @@ public class PlayerController : MonoBehaviour
     // Mouse look position
     private void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition - new Vector3(0.5f, 0.5f, 0f));
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 100))
+        Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
+
+        if (Physics.Raycast(ray, out hit, 1000))
         {
             lookPos = hit.point;
         }
@@ -52,7 +57,7 @@ public class PlayerController : MonoBehaviour
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
 
-        /* FIX FORWARD ANIM */
+        /* ALWAYS FORWARD ANIM FIX */
         if(cam != null)
         {
             camForward = Vector3.Scale(cam.up, new Vector3(1, 0, 1)).normalized;
@@ -70,19 +75,35 @@ public class PlayerController : MonoBehaviour
 
         Move(move);
 
+        /*  MOVE PLAYER WITH RB */
+        Vector3 playerMove = new Vector3(hor, 0, ver);
+        rb.velocity = playerMove * speed;
+
         /* FIRE WITH MOUSE */
-        if(Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             anim.SetTrigger("Shoot");
         }
+        /*
+        float coolDownTimer = Time.time + punchCoolDown;
 
-        /*  MOVE PLAYER WITH RB */
-        Vector3 playerMove = new Vector3(hor, 0, ver);
-        //rb.AddForce(playerMove * speed / Time.deltaTime);
-        //rb.AddForce(playerMove * speed / Time.deltaTime, ForceMode.Acceleration);
-        rb.velocity = playerMove * speed;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if(coolDownTimer <= Time.time)
+            {
+                rb.velocity = playerMove * speed * 2f;
+                anim.SetTrigger("Punch");
+            }
+        }
+        */
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            rb.velocity = playerMove * speed * 2f;
+            anim.SetTrigger("Punch");
+        }
     }
-
+    
+    /* ALWAYS FORWARD ANIM FIX */
     private void Move(Vector3 move)
     {
         if(move.magnitude > 1)
@@ -96,17 +117,16 @@ public class PlayerController : MonoBehaviour
         UpdateAnimator();
     }
 
-    private void UpdateAnimator()
-    {
-        anim.SetFloat("Forward", forwardAmount, 0.01f, Time.deltaTime);
-        anim.SetFloat("Turn", turnAmount, 0.01f, Time.deltaTime);
-    }
-
     private void ConvertMoveInput()
     {
         Vector3 localMove = transform.InverseTransformDirection(moveInput);
         turnAmount = localMove.x;
-
         forwardAmount = localMove.z;
+    }
+
+    private void UpdateAnimator()
+    {
+        anim.SetFloat("Forward", forwardAmount, 0.1f, Time.deltaTime);
+        anim.SetFloat("Turn", turnAmount, 0.1f, Time.deltaTime);
     }
 }
