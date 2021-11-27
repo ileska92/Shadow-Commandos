@@ -10,9 +10,10 @@ public class CameraFollow : MonoBehaviour
     private Vector3 offset;
     private Vector3 velocity = Vector3.zero;
 
+
     private void Awake()
     {
-        offset = Camera.main.transform.position - player.position;
+       offset = Camera.main.transform.position - player.position;
     }
 
     void FixedUpdate()

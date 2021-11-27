@@ -2793,6 +2793,10 @@ PrefabInstance:
       propertyPath: lerpingSpeed
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 1168877354, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
+      propertyPath: mouseLerpingSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2446721847586339972, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
       propertyPath: m_Drag
       value: 0.1

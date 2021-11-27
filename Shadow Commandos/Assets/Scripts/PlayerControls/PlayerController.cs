@@ -20,13 +20,13 @@ public class PlayerController : MonoBehaviour
     float turnAmount;
 
     /* Player speed */
-    public float speed = 10;
+    public float speed = 5;
 
     [Range(1f, 4f)]
-    public float runSpeed = 1.5f;
+    public float runSpeed = 2f;
     // public float punchCoolDown = 1f;
 
-    public float mouseLerpingSpeed = 15f;
+    public float mouseLerpingSpeed = 10f;
 
     public float yVelocity;
 
