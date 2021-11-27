@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 10;
 
     public float force;
+    public float punchCoolDown = 1f;
 
     void Start()
     {
@@ -83,10 +84,22 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetTrigger("Shoot");
         }
+        /*
+        float coolDownTimer = Time.time + punchCoolDown;
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            if(coolDownTimer <= Time.time)
+            {
+                rb.velocity = playerMove * speed * 2f;
+                anim.SetTrigger("Punch");
+            }
+        }
+        */
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
             rb.velocity = playerMove * speed * 2f;
+            anim.SetTrigger("Punch");
         }
     }
     
