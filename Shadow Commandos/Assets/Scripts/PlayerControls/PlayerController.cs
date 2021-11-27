@@ -18,12 +18,20 @@ public class PlayerController : MonoBehaviour
 
     float forwardAmount;
     float turnAmount;
+    float fallAmount;
 
     /* Player speed */
     public float speed = 10;
 
-    public float force;
-    public float punchCoolDown = 1f;
+    [Range(1f,4f)]
+    public float runSpeed = 1.5f;
+    // public float punchCoolDown = 1f;
+
+    // bool isGrounded = true;
+
+    public float lerpingSpeed = 1f;
+
+    public float yVelocity;
 
     void Start()
     {
@@ -38,7 +46,7 @@ public class PlayerController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition - new Vector3(0.5f, 0.5f, 0f));
         RaycastHit hit;
 
-        Debug.DrawRay(ray.origin, ray.direction * 100, Color.green);
+        Debug.DrawRay(ray.origin, ray.direction * 100, Color.green); /* not necessary line */
 
         if (Physics.Raycast(ray, out hit, 1000))
         {
@@ -49,6 +57,9 @@ public class PlayerController : MonoBehaviour
         lookDir.y = 0;
 
         transform.LookAt(transform.position + lookDir, Vector3.up);
+        //transform.LookAt(Vector3.Lerp(transform.position, lookDir, lerpingSpeed * Time.deltaTime), Vector3.up);
+
+        yVelocity = rb.velocity.y;
     }
 
     // Player Movement
@@ -75,15 +86,32 @@ public class PlayerController : MonoBehaviour
 
         Move(move);
 
-        /*  MOVE PLAYER WITH RB */
-        Vector3 playerMove = new Vector3(hor, 0, ver);
-        rb.velocity = playerMove * speed;
+        /*  MOVE PLAYER WITH RIGIDBODY */
+        Vector3 gravity = new Vector3(0.0f, rb.velocity.y, 0.0f);
+        Vector3 playerMove = new Vector3(hor, 0, ver); // y = 0 means no gravity
+        rb.velocity = playerMove * speed + gravity; // new vector 3 for re-assigning gravity
 
         /* FIRE WITH MOUSE */
         if (Input.GetButtonDown("Fire1"))
         {
             anim.SetTrigger("Shoot");
         }
+
+        /* RUN FASTER */
+        /* TODO: runCoolDown timer */
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            /* Can't run faster if falling */
+            if (rb.velocity.y > -2.5f) /* falling is happening if vel y is more than -2.5f */
+            {
+                rb.velocity = playerMove * speed * runSpeed + gravity;
+            }
+            else
+            {
+                rb.velocity = playerMove * speed + gravity;
+            }
+        }
+
         /*
         float coolDownTimer = Time.time + punchCoolDown;
 
@@ -96,13 +124,20 @@ public class PlayerController : MonoBehaviour
             }
         }
         */
-        if (Input.GetKey(KeyCode.LeftShift))
+
+        /* GROUND CHECK AND FALLING */
+        if (rb.velocity.y > -2.5f) /* falling is happening if vel y is more than -2.5f */
         {
-            rb.velocity = playerMove * speed * 2f;
-            anim.SetTrigger("Punch");
+            Debug.Log("Ground!");
+            anim.SetBool("Fall", false);
+        }
+        else
+        {
+            Debug.Log("Not Ground!");
+            anim.SetBool("Fall", true);
         }
     }
-    
+
     /* ALWAYS FORWARD ANIM FIX */
     private void Move(Vector3 move)
     {
