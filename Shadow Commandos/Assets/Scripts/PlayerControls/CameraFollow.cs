@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
 
     private void Awake()
     {
-        offset = Camera.main.transform.position - player.position;
+       offset = Camera.main.transform.position - player.position;
     }
 
     void FixedUpdate()

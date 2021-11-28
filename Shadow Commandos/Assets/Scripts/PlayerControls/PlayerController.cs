@@ -18,18 +18,15 @@ public class PlayerController : MonoBehaviour
 
     float forwardAmount;
     float turnAmount;
-    float fallAmount;
 
     /* Player speed */
-    public float speed = 10;
+    public float speed = 5;
 
-    [Range(1f,4f)]
-    public float runSpeed = 1.5f;
+    [Range(1f, 4f)]
+    public float runSpeed = 2f;
     // public float punchCoolDown = 1f;
 
-    // bool isGrounded = true;
-
-    public float lerpingSpeed = 1f;
+    public float mouseLerpingSpeed = 10f;
 
     public float yVelocity;
 
@@ -41,9 +38,10 @@ public class PlayerController : MonoBehaviour
     }
 
     // Mouse look position
+    // TODO: Mouse look smoothing (fixed)
     private void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition - new Vector3(0.5f, 0.5f, 0f));
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         Debug.DrawRay(ray.origin, ray.direction * 100, Color.green); /* not necessary line */
@@ -56,10 +54,12 @@ public class PlayerController : MonoBehaviour
         Vector3 lookDir = lookPos - transform.position;
         lookDir.y = 0;
 
-        transform.LookAt(transform.position + lookDir, Vector3.up);
-        //transform.LookAt(Vector3.Lerp(transform.position, lookDir, lerpingSpeed * Time.deltaTime), Vector3.up);
+        //transform.LookAt(transform.position + lookDir, Vector3.up);
 
-        yVelocity = rb.velocity.y;
+        /* Smoother mouse feel */
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookDir), mouseLerpingSpeed * Time.deltaTime);
+
+        yVelocity = rb.velocity.y; // for debugging falling errors
     }
 
     // Player Movement
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
         float ver = Input.GetAxis("Vertical");
 
         /* ALWAYS FORWARD ANIM FIX */
-        if(cam != null)
+        if (cam != null)
         {
             camForward = Vector3.Scale(cam.up, new Vector3(1, 0, 1)).normalized;
             move = ver * camForward + hor * cam.right;
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
             move = ver * Vector3.forward + hor * Vector3.right;
         }
 
-        if(move.magnitude > 1)
+        if (move.magnitude > 1)
         {
             move.Normalize();
         }
@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
         */
 
         /* GROUND CHECK AND FALLING */
-        if (rb.velocity.y > -2.5f) /* falling is happening if vel y is more than -2.5f */
+        if (rb.velocity.y > -2.0f) /* falling is happening if vel y is more than -2.5f */
         {
             Debug.Log("Ground!");
             anim.SetBool("Fall", false);
@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
     /* ALWAYS FORWARD ANIM FIX */
     private void Move(Vector3 move)
     {
-        if(move.magnitude > 1)
+        if (move.magnitude > 1)
         {
             move.Normalize();
         }
