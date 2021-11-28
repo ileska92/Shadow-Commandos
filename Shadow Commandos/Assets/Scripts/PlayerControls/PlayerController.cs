@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
         /* RUN FASTER */
         /* TODO: runCoolDown timer */
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetButton("Fire3")) /* left shift */
         {
             /* Can't run faster if falling */
             if (rb.velocity.y > -2.5f) /* falling is happening if vel y is more than -2.5f */
