@@ -101,8 +101,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_389ad7020c1c4c3ea86e6a990ccb2ba1: 0.499
-    - Vector1_b8269f77ccce45f89c7ec37daebcb320: 0.467
+    - Vector1_389ad7020c1c4c3ea86e6a990ccb2ba1: 0.5
+    - Vector1_b8269f77ccce45f89c7ec37daebcb320: 0.5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -127,7 +127,7 @@ Material:
     - _ReceiveShadows: 1
     - _ReflectionSource: 0
     - _Shininess: 1
-    - _Size: 0.94
+    - _Size: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecSource: 0
