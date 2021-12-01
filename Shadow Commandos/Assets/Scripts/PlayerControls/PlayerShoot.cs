@@ -11,6 +11,12 @@ public class PlayerShoot : MonoBehaviour
     public Bullet bulletPrefab;
     public SmokeTrail smokeTrailPrefab;
     public GameObject impactPrefab;
+    public ParticleSystem muzzleFlash;
+
+    private void Start()
+    {
+        muzzleFlash = GameObject.Find("MuzzleFlash01 URP").GetComponent<ParticleSystem>();
+    }
 
     void Update()
     {
@@ -42,9 +48,11 @@ public class PlayerShoot : MonoBehaviour
     {
         Bullet bullet = Instantiate(bulletPrefab);
         SmokeTrail smokeTrail = Instantiate(smokeTrailPrefab);
+        muzzleFlash.Play();
 
         bullet.Completed += DestroyTracerObject;
         smokeTrail.Completed += DestroyTracerObject;
+        //Destroy(muzzleFlash, 0.25f);
 
         if (doImpactEffect)
         {
