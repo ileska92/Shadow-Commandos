@@ -10,6 +10,17 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     Animator anim;
 
+    /*
+     * Mouse clamping to circle (not working)
+    [SerializeField]
+    Transform myPlayer;
+    [SerializeField]
+    Transform crosshairObject;
+
+    [SerializeField]
+    float corsshairRadius = 5;
+    */
+
     Transform cam;
     Vector3 lookPos;
     Vector3 camForward;
@@ -41,6 +52,37 @@ public class PlayerController : MonoBehaviour
     // TODO: Mouse look smoothing (fixed)
     private void Update()
     {
+        // Mouse clamping to circle (not working)
+        /*
+        // Get mouse position into world space:
+        //Transform player;
+        Vector3 wPos = Input.mousePosition;
+        wPos.z = myPlayer.position.z - Camera.main.transform.position.z;
+        wPos = Camera.main.ScreenToWorldPoint(wPos);
+
+        // Get direction from player to worldMousePosition
+        Vector3 direction = wPos - myPlayer.position;
+
+        // Clamp magnitude to certain radius from player 
+        direction = Vector3.ClampMagnitude(direction, corsshairRadius);
+
+        // Set object position
+        crosshairObject.position = myPlayer.position + direction;
+        
+
+        // #############################################
+        // Mouse clamping to circle (not working) ver2
+
+        Vector3 mousePos = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
+
+        mousePos.x = Mathf.Clamp(mousePos.x, 10, 10);
+        mousePos.y = Mathf.Clamp(mousePos.y, 10, 10);
+
+        Vector3 mousePosClamp = new Vector3(mousePos.x, mousePos.y, 0);
+
+        // #############################################
+        */
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
