@@ -26,7 +26,7 @@ public class CineCameraSwitcher : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        playerVCam.Priority = 0;
+        //playerVCam.Priority = 0;
         if (other.CompareTag("Player"))
         {
             blockedVCam.Priority = 0;
