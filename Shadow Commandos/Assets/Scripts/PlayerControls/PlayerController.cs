@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             /* Can't run faster if falling */
-            if (rb.velocity.y > -2.5f) /* falling is happening if vel y is more than -2.5f */
+            if (rb.velocity.y > -4f)
             {
                 rb.velocity = playerMove * speed * runSpeed + gravity;
             }
@@ -168,7 +168,7 @@ public class PlayerController : MonoBehaviour
         */
 
         /* GROUND CHECK AND FALLING */
-        if (rb.velocity.y > -2.0f) /* falling is happening if vel y is more than -2.5f */
+        if (rb.velocity.y > -4f) /* falling is happening if vel y is more than -4f */
         {
             Debug.Log("Ground!");
             anim.SetBool("Fall", false);
