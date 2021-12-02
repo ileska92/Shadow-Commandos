@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1978526387438245418}
+  - component: {fileID: -7051487877863350642}
+  - component: {fileID: -7131859409528222670}
   m_Layer: 0
   m_Name: MedPack
   m_TagString: Untagged
@@ -24,13 +26,40 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554519052532583455}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.20473361, y: 0, z: 2.4514785}
+  m_LocalPosition: {x: -0.20473361, y: 0.687, z: 2.4514785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 68761917014269000}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7051487877863350642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554519052532583455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fbb09c9e42c0da43bd705215a28a6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthHealing: {fileID: 8391360956878514568, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
+  player: {fileID: 7433080239256785251, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
+--- !u!65 &-7131859409528222670
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554519052532583455}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7334127, y: 0.33713877, z: 0.69762444}
+  m_Center: {x: -0.0024623573, y: 0.17051351, z: 0.04789245}
 --- !u!1001 &540137166362688419
 PrefabInstance:
   m_ObjectHideFlags: 0
