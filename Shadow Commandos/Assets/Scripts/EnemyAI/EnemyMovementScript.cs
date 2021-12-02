@@ -8,9 +8,7 @@ public class EnemyMovementScript : MonoBehaviour
     private Transform playerLocation;
     private NavMeshAgent agent;
     public float enemyDistance = 1f; //Distance from player when enemy does attack animation
-    public Health playerHealth;
-    public GameObject player;
-    public bool hasCollided = false;
+
 
         
 
@@ -19,7 +17,6 @@ public class EnemyMovementScript : MonoBehaviour
     {
         playerLocation = GameObject.FindWithTag("Player").transform; //Find player from scene
         agent = GetComponent<NavMeshAgent>(); //Find NavMeshAgent
-        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -53,15 +50,5 @@ public class EnemyMovementScript : MonoBehaviour
            
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        {
-            if (collision.gameObject.tag == "player")
-            {
-                collision.gameObject.GetComponent<Health>().TakeDamage(10);
-            }
-        }
-    }
-
 
 }

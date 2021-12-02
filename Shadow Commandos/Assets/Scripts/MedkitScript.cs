@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DamagePlayer : MonoBehaviour
+public class MedkitScript : MonoBehaviour
 {
     public GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +19,15 @@ public class DamagePlayer : MonoBehaviour
         
     }
 
-    public void Damage()
+    public void OnTriggerEnter(Collider other)
     {
-        player.GetComponent<Health>().TakeDamage(10);
+        if(other.gameObject.tag == "Player")
+        {
+            if(player.GetComponent<Health>().currentHealth < 100)
+            {
+                player.GetComponent<Health>().Healing(50);
+                Destroy(gameObject);
+            }
+        }
     }
 }

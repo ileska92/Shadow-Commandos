@@ -2,45 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Health : MonoBehaviour
 {
     public Image healthBar;
-    public float healthAmount = 100;
+    public float maxHealth = 100;
+    public float currentHealth;
+    public TextMeshProUGUI healthText;
 
-    private void Start()
+    public void Start()
     {
         GameObject imageObject = GameObject.FindGameObjectWithTag("HealthImage");
         healthBar = imageObject.GetComponent<Image>();
+        currentHealth = maxHealth;
+        healthText.GetComponent<TextMeshProUGUI>();
     }
 
     public void Update()
     {
-        if(healthAmount <= 0)
-        {
-            Destroy(gameObject);
-        }
+       
+        healthText.text = currentHealth.ToString();
 
-        if(Input.GetKeyDown(KeyCode.F))
+
+      /*  if(Input.GetKeyDown(KeyCode.F)) //For testing
         {
             TakeDamage(10);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))  //For testing
         {
             Healing(20);
-        }
+        }*/
     }
 
     public void TakeDamage(float Damage)
     {
-        healthAmount -= Damage;
-        healthBar.fillAmount = healthAmount / 100;
+        currentHealth -= Damage;
+        healthBar.fillAmount = currentHealth / 100;
+        if(currentHealth <= 0)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Player"));
+        }
     }
 
     public void Healing(float healPoints)
     {
-        healthAmount += healPoints;
-        healthAmount = Mathf.Clamp(healthAmount, 0, 100);
-        healthBar.fillAmount = healthAmount / 100;
+        currentHealth += healPoints;
+        currentHealth = Mathf.Clamp(currentHealth, 0, 100);
+        healthBar.fillAmount = currentHealth / 100;
     }
 }

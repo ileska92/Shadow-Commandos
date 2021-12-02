@@ -83,9 +83,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDistance: 1
-  playerHealth: {fileID: 0}
-  player: {fileID: 0}
-  hasCollided: 0
 --- !u!195 &195233429060422302
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -136,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 238293647d6d70a47abb63c36b78159b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 2145414907, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
+  playerHealth: {fileID: 8391360956878514568, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
 --- !u!1001 &195233428349478085
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -66,7 +66,7 @@ ModelImporter:
         functionName: Damage
         data: 
         objectReferenceParameter: {fileID: 7433080239256785251, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
-        floatParameter: 10
+        floatParameter: 0
         intParameter: 0
         messageOptions: 0
       transformMask: []
