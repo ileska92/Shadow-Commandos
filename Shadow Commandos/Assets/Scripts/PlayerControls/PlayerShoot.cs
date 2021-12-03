@@ -12,10 +12,12 @@ public class PlayerShoot : MonoBehaviour
     public SmokeTrail smokeTrailPrefab;
     public GameObject impactPrefab;
     public ParticleSystem muzzleFlash;
+   // public GameObject enemy;
 
     private void Start()
     {
         muzzleFlash = GameObject.Find("MuzzleFlash01 URP").GetComponent<ParticleSystem>();
+        //enemy = GameObject.FindGameObjectWithTag("Enemy");
     }
 
     void Update()
@@ -30,6 +32,7 @@ public class PlayerShoot : MonoBehaviour
     {
         Ray ray = new Ray(gunTransform.position, gunTransform.forward);
         bool hasHit = Physics.Raycast(ray, out RaycastHit hitInfo, maxRaycastDistance);
+        
 
         Vector3 start = gunTransform.position;
         Vector3 end;
@@ -37,6 +40,7 @@ public class PlayerShoot : MonoBehaviour
         {
             end = hitInfo.point;
         }
+
         else
         {
             end = ray.GetPoint(maxRaycastDistance);
@@ -65,7 +69,9 @@ public class PlayerShoot : MonoBehaviour
         void DoImpactEffect(object sender, System.EventArgs e)
         {
             GameObject impact = Instantiate(impactPrefab);
-
+            print("hit");  
+            Damage();
+               
             impact.transform.position = to;
             impact.transform.rotation = Quaternion.LookRotation(normal);
 
@@ -77,4 +83,18 @@ public class PlayerShoot : MonoBehaviour
     {
         Destroy((sender as TracerObject).gameObject);
     }
+
+   /* public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            other.gameObject.GetComponent<ZombieHealth>().TakeDamage(50);
+        }
+    }
+   */
+    public void Damage()
+    {
+        GetComponent<ZombieHealth>().TakeDamage(50);
+    }
+    
 }
