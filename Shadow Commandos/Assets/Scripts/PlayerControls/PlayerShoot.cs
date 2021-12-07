@@ -13,10 +13,11 @@ public class PlayerShoot : MonoBehaviour
     public GameObject impactPrefab;
     public ParticleSystem muzzleFlash;
 
+    GameObject enemy;
+
     private void Start()
     {
         muzzleFlash = GameObject.Find("MuzzleFlash01 URP").GetComponent<ParticleSystem>();
-        
     }
 
     void Update()
@@ -31,16 +32,17 @@ public class PlayerShoot : MonoBehaviour
     {
         Ray ray = new Ray(gunTransform.position, gunTransform.forward);
         bool hasHit = Physics.Raycast(ray, out RaycastHit hitInfo, maxRaycastDistance);
-        
+
+
 
         Vector3 start = gunTransform.position;
         Vector3 end;
         if (hasHit)
         {
             end = hitInfo.point;
-            if (hitInfo.transform.tag == "Enemy")
+            if (hitInfo.collider.CompareTag("Enemy"))
             {
-                hitInfo.collider.gameObject.GetComponent<ZombieHealth>().TakeDamage(50);
+                enemy = hitInfo.collider.gameObject;
             }
         }
 
@@ -60,10 +62,15 @@ public class PlayerShoot : MonoBehaviour
         bullet.Completed += DestroyTracerObject;
         smokeTrail.Completed += DestroyTracerObject;
         //Destroy(muzzleFlash, 0.25f);
-
+       
         if (doImpactEffect)
         {
             bullet.Arrived += DoImpactEffect;
+            if (enemy)
+            {
+                bullet.Arrived += EnemyDamage;
+            }
+            
         }
 
         bullet.DrawLine(from, to, speed: 100.0f);
@@ -72,17 +79,17 @@ public class PlayerShoot : MonoBehaviour
         void DoImpactEffect(object sender, System.EventArgs e)
         {
             GameObject impact = Instantiate(impactPrefab);
-            print("hit");
-            /*if(hitInfo.transform.tag == "Enemy")
-            {
 
-            }
-            Damage();*/
-               
             impact.transform.position = to;
             impact.transform.rotation = Quaternion.LookRotation(normal);
 
             Destroy(impact, 0.5f);
+        }
+
+        void EnemyDamage(object sender, System.EventArgs e)
+        {
+            //hitInfo.collider.
+            enemy.gameObject.GetComponent<ZombieHealth>().TakeDamage(50);
         }
     }
 
