@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 2446721847586339972}
   - component: {fileID: 1168877355}
   - component: {fileID: 1168877354}
-  - component: {fileID: 8391360956878514568}
+  - component: {fileID: -5587408853437886350}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -152,7 +152,7 @@ MonoBehaviour:
   runSpeed: 2
   mouseLerpingSpeed: 10
   yVelocity: 0
---- !u!114 &8391360956878514568
+--- !u!114 &-5587408853437886350
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,13 +161,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7433080239256785251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7487574be1b3254e92b4c4e17061125, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b6ad4c98a69ba644ac96d14e0f2d290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
   maxHealth: 100
-  currentHealth: 100
-  healthText: {fileID: 0}
+  currentHealth: 0
+  healthBar: {fileID: 0}
 --- !u!1001 &7433080238625659256
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -20,6 +20,6 @@ public class DamagePlayer : MonoBehaviour
 
     public void Damage()
     {
-        player.GetComponent<Health>().TakeDamage(10);
+        player.GetComponent<PlayerHealth>().TakeDamage(20);
     }
 }
