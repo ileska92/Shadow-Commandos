@@ -13,6 +13,8 @@ public class PlayerShoot : MonoBehaviour
     public GameObject impactPrefab;
     public ParticleSystem muzzleFlash;
 
+    GameObject enemy;
+
     private void Start()
     {
         muzzleFlash = GameObject.Find("MuzzleFlash01 URP").GetComponent<ParticleSystem>();
@@ -26,17 +28,24 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
-    void Fire()
+    public void Fire()
     {
         Ray ray = new Ray(gunTransform.position, gunTransform.forward);
         bool hasHit = Physics.Raycast(ray, out RaycastHit hitInfo, maxRaycastDistance);
+
+
 
         Vector3 start = gunTransform.position;
         Vector3 end;
         if (hasHit)
         {
             end = hitInfo.point;
+            if (hitInfo.collider.CompareTag("Enemy"))
+            {
+                enemy = hitInfo.collider.gameObject;
+            }
         }
+
         else
         {
             end = ray.GetPoint(maxRaycastDistance);
@@ -53,10 +62,15 @@ public class PlayerShoot : MonoBehaviour
         bullet.Completed += DestroyTracerObject;
         smokeTrail.Completed += DestroyTracerObject;
         //Destroy(muzzleFlash, 0.25f);
-
+       
         if (doImpactEffect)
         {
             bullet.Arrived += DoImpactEffect;
+            if (enemy)
+            {
+                bullet.Arrived += EnemyDamage;
+            }
+            
         }
 
         bullet.DrawLine(from, to, speed: 100.0f);
@@ -70,6 +84,15 @@ public class PlayerShoot : MonoBehaviour
             impact.transform.rotation = Quaternion.LookRotation(normal);
 
             Destroy(impact, 0.5f);
+        }
+
+        void EnemyDamage(object sender, System.EventArgs e)
+        {
+            //hitInfo.collider.
+            if(enemy.gameObject != null)
+            {
+                enemy.gameObject.GetComponent<ZombieHealth>().TakeDamage(50);
+            }
         }
     }
 
