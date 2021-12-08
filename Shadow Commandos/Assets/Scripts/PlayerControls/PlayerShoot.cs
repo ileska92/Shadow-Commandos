@@ -89,7 +89,10 @@ public class PlayerShoot : MonoBehaviour
         void EnemyDamage(object sender, System.EventArgs e)
         {
             //hitInfo.collider.
-            enemy.gameObject.GetComponent<ZombieHealth>().TakeDamage(50);
+            if(enemy.gameObject != null)
+            {
+                enemy.gameObject.GetComponent<ZombieHealth>().TakeDamage(50);
+            }
         }
     }
 
