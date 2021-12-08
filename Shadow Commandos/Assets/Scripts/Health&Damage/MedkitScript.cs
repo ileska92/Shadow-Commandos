@@ -23,9 +23,9 @@ public class MedkitScript : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            if(player.GetComponent<Health>().currentHealth < 100)
+            if(player.GetComponent<PlayerHealth>().currentHealth < 100)
             {
-                player.GetComponent<Health>().Healing(50);
+                player.GetComponent<PlayerHealth>().Healing(50);
                 Destroy(gameObject);
             }
         }
