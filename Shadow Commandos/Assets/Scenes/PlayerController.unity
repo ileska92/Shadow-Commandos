@@ -268,11 +268,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115931852}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &144736882 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2037061732340029428, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
-  m_PrefabInstance: {fileID: 897504418}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &160575203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2920,30 +2915,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 966548168166464957, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
-      propertyPath: muzzleFlash
-      value: 
-      objectReference: {fileID: 5221709627702379650, guid: de4e9534ba69320478f3018615f1ac74, type: 3}
-    - target: {fileID: 2762757770112491305, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
-      propertyPath: gunEnd
-      value: 
-      objectReference: {fileID: 144736882}
-    - target: {fileID: 2762757770112491305, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
-      propertyPath: impactPrefab
-      value: 
-      objectReference: {fileID: 6559473287461083864, guid: a97019e3b77c8414c88a6a979703cd4e, type: 3}
-    - target: {fileID: 3063183249574312653, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4083365954462333975, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210147808110477443, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7433080239256785249, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
       propertyPath: m_RootOrder
       value: 10

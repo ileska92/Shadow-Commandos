@@ -49,7 +49,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1866657824718261864, guid: 33fcb1313e9a85943bbdcf361c7334c3, type: 3}
   smokeTrailPrefab: {fileID: 7329845158802601835, guid: f34b1e92580084a4fba87723b88fd1cc, type: 3}
   impactPrefab: {fileID: 6559473287461083864, guid: a97019e3b77c8414c88a6a979703cd4e, type: 3}
-  muzzleFlash: {fileID: 0}
+  muzzleFlash: {fileID: 5221709627702379650, guid: de4e9534ba69320478f3018615f1ac74, type: 3}
 --- !u!1 &7433080239256785251
 GameObject:
   m_ObjectHideFlags: 0
