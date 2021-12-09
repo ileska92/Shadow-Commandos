@@ -19,7 +19,7 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       healthText.text = slider.value.ToString("0");
+       healthText.text = slider.value.ToString("0") + " HP";
     }
 
     public void SetMaxHealth(float health)

@@ -15,14 +15,35 @@ public class PlayerShoot : MonoBehaviour
 
     GameObject enemy;
 
+    //AmmoSystem
+    public int maxAmmo = 150;
+    public int magazineCurrentAmmo;
+    public int magazineMaxAmmo = 30;
+    public int currentAmmo;
+    public float reloadTime = 1;
+    private bool isReloading = false;
+
     private void Start()
     {
         muzzleFlash = GameObject.Find("MuzzleFlash01 URP").GetComponent<ParticleSystem>();
+        magazineCurrentAmmo = magazineMaxAmmo;
+        currentAmmo = maxAmmo;
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if(isReloading)
+        {
+            return;
+        }
+
+        if(magazineCurrentAmmo <= 0 && currentAmmo > 0)
+        {
+            StartCoroutine(Reload());
+            return;
+        }
+
+        if (Input.GetButtonDown("Fire1") && magazineCurrentAmmo > 0)
         {
             Fire();
         }
@@ -32,6 +53,7 @@ public class PlayerShoot : MonoBehaviour
     {
         Ray ray = new Ray(gunTransform.position, gunTransform.forward);
         bool hasHit = Physics.Raycast(ray, out RaycastHit hitInfo, maxRaycastDistance);
+        magazineCurrentAmmo--;
 
 
 
@@ -94,7 +116,7 @@ public class PlayerShoot : MonoBehaviour
         void EnemyDamage(object sender, System.EventArgs e)
         {
             //hitInfo.collider.
-            if(enemy.gameObject != null)
+            if(enemy != null)
             {
                 enemy.gameObject.GetComponent<ZombieHealth>().TakeDamage(50);
                 //print("zombiehealth"); //Debug
@@ -105,5 +127,17 @@ public class PlayerShoot : MonoBehaviour
     private void DestroyTracerObject(object sender, System.EventArgs e)
     {
         Destroy((sender as TracerObject).gameObject);
+    }
+
+    IEnumerator Reload()
+    {
+        isReloading = true;
+        Debug.Log("reloading..");
+
+        yield return new WaitForSeconds(reloadTime);
+
+        currentAmmo -= 30;
+        magazineCurrentAmmo = magazineMaxAmmo;
+        isReloading = false;
     }
 }
