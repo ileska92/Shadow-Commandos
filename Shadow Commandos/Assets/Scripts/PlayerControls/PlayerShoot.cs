@@ -40,9 +40,12 @@ public class PlayerShoot : MonoBehaviour
         if (hasHit)
         {
             end = hitInfo.point;
+            enemy = null;
+            //print("hit"); //Debug
             if (hitInfo.collider.CompareTag("Enemy"))
             {
                 enemy = hitInfo.collider.gameObject;
+               //print("collider"); //Debug
             }
         }
 
@@ -65,10 +68,12 @@ public class PlayerShoot : MonoBehaviour
        
         if (doImpactEffect)
         {
+            //print("impact"); //Debug
             bullet.Arrived += DoImpactEffect;
             if (enemy)
             {
                 bullet.Arrived += EnemyDamage;
+                //print("damage"); //Debug
             }
             
         }
@@ -92,6 +97,7 @@ public class PlayerShoot : MonoBehaviour
             if(enemy.gameObject != null)
             {
                 enemy.gameObject.GetComponent<ZombieHealth>().TakeDamage(50);
+                //print("zombiehealth"); //Debug
             }
         }
     }
