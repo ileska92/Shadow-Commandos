@@ -12,12 +12,6 @@ public class DamagePlayer : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Damage()
     {
         player.GetComponent<PlayerHealth>().TakeDamage(20);

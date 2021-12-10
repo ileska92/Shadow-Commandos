@@ -11,6 +11,7 @@ public class AmmoBar : MonoBehaviour
     void Start()
     {
         ammoText.GetComponent<TextMeshProUGUI>();
+        playerAmmo = GameObject.FindGameObjectWithTag("Gun").GetComponent<PlayerShoot>();
     }
 
     // Update is called once per frame

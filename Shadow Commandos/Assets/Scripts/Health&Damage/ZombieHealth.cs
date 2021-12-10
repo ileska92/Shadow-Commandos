@@ -12,12 +12,6 @@ public class ZombieHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void TakeDamage(float Damage)
     {
         currentHealth -= Damage;
