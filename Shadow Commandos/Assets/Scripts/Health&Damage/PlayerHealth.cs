@@ -8,6 +8,13 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
 
     public HealthBar healthBar;
+
+    //Audio
+    public AudioSource myAudioHeartBeat;
+    public AudioClip hearthBeatSound;
+    public AudioSource myAudioDamage;
+    public AudioClip damageSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +26,12 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (currentHealth > 30)
+        {
+            myAudioHeartBeat.Stop();
+        }
+
         /*  if(Input.GetKeyDown(KeyCode.F)) //For testing
        {
            TakeDamage(10);
@@ -32,7 +45,14 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= Damage;
         healthBar.SetHealth(currentHealth);
-      
+        myAudioDamage.PlayOneShot(damageSound);
+
+        if (currentHealth < 30)
+        {
+            myAudioHeartBeat.Play();
+        }
+
+
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
