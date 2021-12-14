@@ -15,12 +15,18 @@ public class PlayerShoot : MonoBehaviour
 
     GameObject enemy;
 
+    //Audio
+    public AudioSource myAudioShoot;
+    public AudioSource myAudioReload;
+    public AudioClip shootSound;
+    public AudioClip reloadSound;
+
     //AmmoSystem
-    public int maxAmmo = 150;
+    public int maxAmmo = 50;
     public int magazineCurrentAmmo;
-    public int magazineMaxAmmo = 30;
+    public int magazineMaxAmmo = 10;
     public int currentAmmo;
-    public float reloadTime = 1;
+    public float reloadTime = 2;
     private bool isReloading = false;
 
     private void Start()
@@ -54,7 +60,7 @@ public class PlayerShoot : MonoBehaviour
         Ray ray = new Ray(gunTransform.position, gunTransform.forward);
         bool hasHit = Physics.Raycast(ray, out RaycastHit hitInfo, maxRaycastDistance);
         magazineCurrentAmmo--;
-
+        myAudioShoot.PlayOneShot(shootSound);
 
 
         Vector3 start = gunTransform.position;
@@ -133,10 +139,11 @@ public class PlayerShoot : MonoBehaviour
     {
         isReloading = true;
         Debug.Log("reloading..");
+        myAudioReload.PlayOneShot(reloadSound);
 
         yield return new WaitForSeconds(reloadTime);
 
-        currentAmmo -= 30;
+        currentAmmo -= 10;
         magazineCurrentAmmo = magazineMaxAmmo;
         isReloading = false;
     }

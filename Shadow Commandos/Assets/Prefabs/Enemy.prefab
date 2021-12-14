@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb7d02a2376e2b4386c1da62a3a5053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDistance: 1
+  enemyDistance: 0.9
 --- !u!195 &195233429060422302
 NavMeshAgent:
   m_ObjectHideFlags: 0
