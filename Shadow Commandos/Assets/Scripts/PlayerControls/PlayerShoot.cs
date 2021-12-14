@@ -43,6 +43,12 @@ public class PlayerShoot : MonoBehaviour
             return;
         }
 
+        if(Input.GetKeyDown(KeyCode.R) && magazineCurrentAmmo < magazineMaxAmmo && currentAmmo > 0)
+        {
+            StartCoroutine(ManualReload());
+            return;
+        }
+
         if(magazineCurrentAmmo <= 0 && currentAmmo > 0)
         {
             StartCoroutine(Reload());
@@ -143,8 +149,43 @@ public class PlayerShoot : MonoBehaviour
 
         yield return new WaitForSeconds(reloadTime);
 
-        currentAmmo -= 10;
-        magazineCurrentAmmo = magazineMaxAmmo;
+        if(currentAmmo < 10)
+        {
+            magazineCurrentAmmo = currentAmmo;
+            currentAmmo -= currentAmmo;
+        }
+
+        else
+        {
+            currentAmmo -= 10;
+            magazineCurrentAmmo = magazineMaxAmmo;
+        }
+        isReloading = false;
+    }
+
+    IEnumerator ManualReload()
+    {
+        isReloading = true;
+        Debug.Log("Manually reloading..");
+        myAudioReload.PlayOneShot(reloadSound);
+
+        yield return new WaitForSeconds(reloadTime);
+
+        if (currentAmmo < 10)
+        {
+            currentAmmo -= magazineMaxAmmo - magazineCurrentAmmo;
+            magazineCurrentAmmo += magazineMaxAmmo - magazineCurrentAmmo;
+            if(currentAmmo < (magazineMaxAmmo - magazineCurrentAmmo))
+            {
+                magazineCurrentAmmo += currentAmmo;
+                currentAmmo -= currentAmmo;
+            }
+        }
+        else
+        {
+            currentAmmo -= magazineMaxAmmo - magazineCurrentAmmo;
+            magazineCurrentAmmo = magazineMaxAmmo;
+        }
         isReloading = false;
     }
 }
