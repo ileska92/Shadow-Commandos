@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7433080239256785251, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
   myAudio: {fileID: 1770380769130501384}
-  medKitSound: {fileID: 8300000, guid: fa0245f9e6822c549b25e732c4da7287, type: 3}
+  medKitSound: {fileID: 8300000, guid: 0d557e29a17332e4891cafac64667288, type: 3}
 --- !u!65 &-7131859409528222670
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -72,9 +72,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fa0245f9e6822c549b25e732c4da7287, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0d557e29a17332e4891cafac64667288, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.08
+  m_Volume: 1
   m_Pitch: 0.9
   Loop: 0
   Mute: 0
