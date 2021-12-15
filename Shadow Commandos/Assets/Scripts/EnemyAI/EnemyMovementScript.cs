@@ -7,7 +7,7 @@ public class EnemyMovementScript : MonoBehaviour
 {
     private Transform playerLocation;
     private NavMeshAgent agent;
-    public float enemyDistance = 1f; //Distance from player when enemy does attack animation
+    public float enemyDistance = 0.9f; //Distance from player when enemy does attack animation
 
 
         

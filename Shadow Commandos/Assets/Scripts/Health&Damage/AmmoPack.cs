@@ -5,6 +5,8 @@ using UnityEngine;
 public class AmmoPack : MonoBehaviour
 {
     public PlayerShoot playerAmmo;
+    public AudioSource myAudio;
+    public AudioClip ammoSound;
 
     // Start is called before the first frame update
     void Start()
@@ -16,10 +18,11 @@ public class AmmoPack : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            if(playerAmmo.currentAmmo < 150)
+            if(playerAmmo.currentAmmo < 50)
             {
-                playerAmmo.currentAmmo += 30;
-                playerAmmo.currentAmmo = Mathf.Clamp(playerAmmo.currentAmmo, 0, 150);
+                AudioSource.PlayClipAtPoint(ammoSound, this.gameObject.transform.position);
+                playerAmmo.currentAmmo += 20;
+                playerAmmo.currentAmmo = Mathf.Clamp(playerAmmo.currentAmmo, 0, 50);
                 Destroy(gameObject);
             }
         }
