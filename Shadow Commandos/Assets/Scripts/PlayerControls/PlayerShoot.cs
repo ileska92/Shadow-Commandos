@@ -14,6 +14,7 @@ public class PlayerShoot : MonoBehaviour
     public ParticleSystem muzzleFlash;
 
     GameObject enemy;
+    public float enemyDamageAmmount = 25f;
 
     //Audio
     public AudioSource myAudioShoot;
@@ -130,7 +131,7 @@ public class PlayerShoot : MonoBehaviour
             //hitInfo.collider.
             if(enemy != null)
             {
-                enemy.gameObject.GetComponent<ZombieHealth>().TakeDamage(50);
+                enemy.gameObject.GetComponent<ZombieHealth>().TakeDamage(enemyDamageAmmount);
                 //print("zombiehealth"); //Debug
             }
         }
