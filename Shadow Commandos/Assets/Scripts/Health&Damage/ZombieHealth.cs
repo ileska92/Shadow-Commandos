@@ -6,6 +6,7 @@ public class ZombieHealth : MonoBehaviour
 {
     public float maxHealth = 100;
     public float currentHealth;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class ZombieHealth : MonoBehaviour
     {
         currentHealth -= Damage;
         if (currentHealth <= 0)
-        {
+        {           
             Destroy(gameObject);
         }
     }
