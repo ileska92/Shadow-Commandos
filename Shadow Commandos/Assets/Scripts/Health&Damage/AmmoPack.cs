@@ -21,7 +21,7 @@ public class AmmoPack : MonoBehaviour
             if(playerAmmo.currentAmmo < 50)
             {
                 AudioSource.PlayClipAtPoint(ammoSound, this.gameObject.transform.position);
-                playerAmmo.currentAmmo += 20;
+                playerAmmo.currentAmmo += 30;
                 playerAmmo.currentAmmo = Mathf.Clamp(playerAmmo.currentAmmo, 0, 50);
                 Destroy(gameObject);
             }
