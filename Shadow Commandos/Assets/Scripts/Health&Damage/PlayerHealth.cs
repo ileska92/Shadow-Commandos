@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
 
     public HealthBar healthBar;
+    public GameObject lowHpPostProcess;
 
     //Audio
     public AudioSource myAudioHeartBeat;
@@ -18,9 +20,12 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lowHpPostProcess = GameObject.Find("LowHpPostProcess");
         healthBar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        lowHpPostProcess.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -49,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth < 30)
         {
+            lowHpPostProcess.SetActive(true);
             myAudioHeartBeat.Play();
         }
 

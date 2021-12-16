@@ -14,7 +14,7 @@ public class PlayerShoot : MonoBehaviour
     public ParticleSystem muzzleFlash;
 
     GameObject enemy;
-    public float enemyDamageAmmount = 25f;
+    public float enemyDamageAmmount = 34f;
 
     //Audio
     public AudioSource myAudioShoot;
@@ -23,9 +23,9 @@ public class PlayerShoot : MonoBehaviour
     public AudioClip reloadSound;
 
     //AmmoSystem
-    public int maxAmmo = 50;
+    public int maxAmmo = 75;
     public int magazineCurrentAmmo;
-    public int magazineMaxAmmo = 10;
+    public int magazineMaxAmmo = 15;
     public int currentAmmo;
     public float reloadTime = 2;
     private bool isReloading = false;
@@ -150,7 +150,7 @@ public class PlayerShoot : MonoBehaviour
 
         yield return new WaitForSeconds(reloadTime);
 
-        if(currentAmmo < 10)
+        if(currentAmmo < 15)
         {
             magazineCurrentAmmo = currentAmmo;
             currentAmmo -= currentAmmo;
@@ -158,7 +158,7 @@ public class PlayerShoot : MonoBehaviour
 
         else
         {
-            currentAmmo -= 10;
+            currentAmmo -= 15;
             magazineCurrentAmmo = magazineMaxAmmo;
         }
         isReloading = false;
@@ -172,7 +172,7 @@ public class PlayerShoot : MonoBehaviour
 
         yield return new WaitForSeconds(reloadTime);
 
-        if (currentAmmo < 10)
+        if (currentAmmo < 15)
         {
             currentAmmo -= magazineMaxAmmo - magazineCurrentAmmo;
             magazineCurrentAmmo += magazineMaxAmmo - magazineCurrentAmmo;
