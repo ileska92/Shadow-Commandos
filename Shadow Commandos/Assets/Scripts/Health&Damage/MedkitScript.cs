@@ -25,11 +25,11 @@ public class MedkitScript : MonoBehaviour
             {
                 AudioSource.PlayClipAtPoint(medKitSound, this.gameObject.transform.position);
                 player.GetComponent<PlayerHealth>().Healing(50);
-                Destroy(gameObject);
                 if(lowHpPostProcess == true)
                 {
                     lowHpPostProcess.SetActive(false);
                 }
+                Destroy(gameObject);
             }
         }
     }
