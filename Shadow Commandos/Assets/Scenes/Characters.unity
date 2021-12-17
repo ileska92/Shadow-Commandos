@@ -1776,6 +1776,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709790471}
   m_CullTransparentMesh: 1
+--- !u!114 &747171387 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 966548168166464957, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
+  m_PrefabInstance: {fileID: 897504418}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89afb8af495817a4193a24732d999a11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &752134426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1996,10 +2007,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 966548168166464957, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
-      propertyPath: enemyDamageAmmount
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 7433080239256785249, guid: 9f26759840c36d744bfa7444c0311d7a, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -3076,6 +3083,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5193458832025955788, guid: 1f95092408a34494cb258b5d65c18f6f, type: 3}
+      propertyPath: playerAmmo
+      value: 
+      objectReference: {fileID: 747171387}
     - target: {fileID: 5193458833277238824, guid: 1f95092408a34494cb258b5d65c18f6f, type: 3}
       propertyPath: m_Name
       value: Canvas

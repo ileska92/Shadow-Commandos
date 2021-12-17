@@ -170,12 +170,12 @@ public class PlayerController : MonoBehaviour
         /* GROUND CHECK AND FALLING */
         if (rb.velocity.y > -4f) /* falling is happening if vel y is more than -4f */
         {
-            Debug.Log("Ground!");
+            //Debug.Log("Ground!");
             anim.SetBool("Fall", false);
         }
         else
         {
-            Debug.Log("Not Ground!");
+            //Debug.Log("Not Ground!");
             anim.SetBool("Fall", true);
         }
     }
