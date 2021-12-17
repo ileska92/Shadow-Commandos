@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7322685753335367573
 Transform:
   m_ObjectHideFlags: 0
@@ -1126,10 +1126,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1660384031183063813, guid: f33e0de61b87b45499ad6ed7ee1911d8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 114e7a31133ebc14794254b1f79d6a5b, type: 2}
+    - target: {fileID: 119013718123720649, guid: f33e0de61b87b45499ad6ed7ee1911d8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f9272925d8ce3384fa3fc0a164199251, type: 2}
     - target: {fileID: 919132149155446097, guid: f33e0de61b87b45499ad6ed7ee1911d8, type: 3}
       propertyPath: m_Name
       value: corridor_door
       objectReference: {fileID: 0}
+    - target: {fileID: 1663095137155709846, guid: f33e0de61b87b45499ad6ed7ee1911d8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f9272925d8ce3384fa3fc0a164199251, type: 2}
+    - target: {fileID: 8247994413960396516, guid: f33e0de61b87b45499ad6ed7ee1911d8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 36b45c3e2cff2e54494ab599d90a361f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f33e0de61b87b45499ad6ed7ee1911d8, type: 3}
 --- !u!4 &6923260327155914765 stripped

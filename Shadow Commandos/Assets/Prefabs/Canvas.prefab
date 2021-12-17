@@ -310,7 +310,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10 / 50 Ammo
+  m_text: 15 / 75 Ammo
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c5c66a851aacbdf42b48d7b40f728f59, type: 2}
   m_sharedMaterial: {fileID: -5991558060103032515, guid: c5c66a851aacbdf42b48d7b40f728f59, type: 2}
