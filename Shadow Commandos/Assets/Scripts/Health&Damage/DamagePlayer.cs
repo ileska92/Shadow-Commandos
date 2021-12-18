@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DamagePlayer : MonoBehaviour
 {
     public GameObject player;
+    public float damagePlayer = 20;
     //public AudioSource myAudio; //Uncomment these if zombie attack sound is needed
     //public AudioClip[] zombieAttackSounds; //Uncomment these if zombie attack sound is needed
     // Start is called before the first frame update
@@ -17,7 +18,7 @@ public class DamagePlayer : MonoBehaviour
 
     public void Damage()
     {
-        player.GetComponent<PlayerHealth>().TakeDamage(20);
+        player.GetComponent<PlayerHealth>().TakeDamage(damagePlayer);
         //myAudio.Play(); //Uncomment these if zombie attack sound is needed
     }
 }

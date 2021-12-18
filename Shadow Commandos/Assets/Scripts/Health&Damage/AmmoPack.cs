@@ -18,11 +18,11 @@ public class AmmoPack : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            if(playerAmmo.currentAmmo < 50)
+            if(playerAmmo.currentAmmo < playerAmmo.maxAmmo)
             {
                 AudioSource.PlayClipAtPoint(ammoSound, this.gameObject.transform.position);
                 playerAmmo.currentAmmo += 30;
-                playerAmmo.currentAmmo = Mathf.Clamp(playerAmmo.currentAmmo, 0, 50);
+                playerAmmo.currentAmmo = Mathf.Clamp(playerAmmo.currentAmmo, 0, 75);
                 Destroy(gameObject);
             }
         }

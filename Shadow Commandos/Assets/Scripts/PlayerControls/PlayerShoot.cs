@@ -150,7 +150,7 @@ public class PlayerShoot : MonoBehaviour
 
         yield return new WaitForSeconds(reloadTime);
 
-        if(currentAmmo < 15)
+        if(currentAmmo < magazineMaxAmmo)
         {
             magazineCurrentAmmo = currentAmmo;
             currentAmmo -= currentAmmo;
@@ -158,7 +158,7 @@ public class PlayerShoot : MonoBehaviour
 
         else
         {
-            currentAmmo -= 15;
+            currentAmmo -= magazineMaxAmmo;
             magazineCurrentAmmo = magazineMaxAmmo;
         }
         isReloading = false;
@@ -172,7 +172,7 @@ public class PlayerShoot : MonoBehaviour
 
         yield return new WaitForSeconds(reloadTime);
 
-        if (currentAmmo < 15)
+        if (currentAmmo < magazineMaxAmmo)
         {
             currentAmmo -= magazineMaxAmmo - magazineCurrentAmmo;
             magazineCurrentAmmo += magazineMaxAmmo - magazineCurrentAmmo;

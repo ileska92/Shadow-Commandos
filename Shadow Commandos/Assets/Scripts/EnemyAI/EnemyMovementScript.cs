@@ -23,7 +23,7 @@ public class EnemyMovementScript : MonoBehaviour
     void Update()
     {
         //   transform.LookAt(player); // Look at the player
-        if (Vector3.Distance(transform.position, playerLocation.position) > 12)
+        if (Vector3.Distance(transform.position, playerLocation.position) > 11)
          {
             gameObject.GetComponent<Animator>().Play("idle");
             agent.isStopped = true;
@@ -31,7 +31,7 @@ public class EnemyMovementScript : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().detectCollisions = true;
         }
    
-        if (Vector3.Distance(transform.position, playerLocation.position) <= 12 && Vector3.Distance(transform.position, playerLocation.position) > 1)
+        if (Vector3.Distance(transform.position, playerLocation.position) <= 11 && Vector3.Distance(transform.position, playerLocation.position) > 1)
         {
             agent.isStopped = false;
             gameObject.GetComponent<Rigidbody>().isKinematic = false;

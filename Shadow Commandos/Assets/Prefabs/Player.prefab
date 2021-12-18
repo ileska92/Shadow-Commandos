@@ -1400,7 +1400,7 @@ MonoBehaviour:
   smokeTrailPrefab: {fileID: 7329845158802601835, guid: f34b1e92580084a4fba87723b88fd1cc, type: 3}
   impactPrefab: {fileID: 6559473287461083864, guid: a97019e3b77c8414c88a6a979703cd4e, type: 3}
   muzzleFlash: {fileID: 5221709627702379650, guid: de4e9534ba69320478f3018615f1ac74, type: 3}
-  enemyDamageAmmount: 25
+  enemyDamageAmmount: 34
   myAudioShoot: {fileID: 8693669772922142292}
   myAudioReload: {fileID: 2898649847819411704}
   shootSound: {fileID: 8300000, guid: 97d6d4b34ce237d4db6bff4d9454ddf8, type: 3}
@@ -2239,7 +2239,7 @@ Transform:
   m_GameObject: {fileID: 7433080239256785251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children:
   - {fileID: 3067973271737106598}
   - {fileID: 2037061732340029428}
@@ -2273,7 +2273,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7433080239256785251}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 100
   m_Drag: 0.1
   m_AngularDrag: 0.05
   m_UseGravity: 1
