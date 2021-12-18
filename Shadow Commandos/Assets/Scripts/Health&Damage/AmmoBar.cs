@@ -17,6 +17,6 @@ public class AmmoBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ammoText.text = playerAmmo.magazineCurrentAmmo.ToString() + " / " + playerAmmo.currentAmmo.ToString() + " Ammo";
+        ammoText.text = playerAmmo.magazineCurrentAmmo.ToString() + " / " + playerAmmo.currentAmmo.ToString() + " AMMO";
     }
 }
