@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 195233429060422300}
   - component: {fileID: 195233429060422303}
   - component: {fileID: 195233429060422302}
-  - component: {fileID: 195233429060422297}
   - component: {fileID: 3314797118356649435}
   - component: {fileID: 4307335952403786459}
   - component: {fileID: -282081864708477353}
+  - component: {fileID: 2869419017018257202}
   m_Layer: 0
   m_Name: Enemy-03-Labrat
   m_TagString: Enemy
@@ -107,22 +107,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!54 &195233429060422297
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195233429060422499}
-  serializedVersion: 2
-  m_Mass: 50
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &3314797118356649435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +231,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &2869419017018257202
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195233429060422499}
+  serializedVersion: 2
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &6163676404867193130
 PrefabInstance:
   m_ObjectHideFlags: 0

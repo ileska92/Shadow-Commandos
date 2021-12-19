@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAmmo: {fileID: 0}
   myAudio: {fileID: 8277510972304850283}
-  ammoSound: {fileID: 8300000, guid: 18cc3861a5a649543b7d9c6f42aba477, type: 3}
+  ammoSound: {fileID: 8300000, guid: eed9edb019af25a408c5ccd150219007, type: 3}
 --- !u!65 &1622488347389404256
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -71,8 +71,8 @@ AudioSource:
   m_GameObject: {fileID: 2235935559670062041}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 18cc3861a5a649543b7d9c6f42aba477, type: 3}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: aae70768a2000e249952435dacddad5b, type: 2}
+  m_audioClip: {fileID: 8300000, guid: eed9edb019af25a408c5ccd150219007, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
