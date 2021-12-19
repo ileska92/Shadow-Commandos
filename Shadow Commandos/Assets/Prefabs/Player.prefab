@@ -1360,7 +1360,8 @@ GameObject:
   - component: {fileID: 966548168166464957}
   - component: {fileID: 8693669772922142292}
   - component: {fileID: 2898649847819411704}
-  m_Layer: 0
+  - component: {fileID: 7900575712178931175}
+  m_Layer: 2
   m_Name: Gun
   m_TagString: Gun
   m_Icon: {fileID: 0}
@@ -1602,6 +1603,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &7900575712178931175
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4942102787317555948}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.23476392, y: 0.27764106, z: 0.75506115}
+  m_Center: {x: 0.0027853101, y: -0.029753685, z: -0.32908964}
 --- !u!1 &5032007737936979872
 GameObject:
   m_ObjectHideFlags: 0
