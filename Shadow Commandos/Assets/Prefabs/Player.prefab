@@ -2309,7 +2309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  runSpeed: 2
+  runSpeed: 1
   mouseLerpingSpeed: 10
   yVelocity: 0
 --- !u!114 &8739047740932074332
