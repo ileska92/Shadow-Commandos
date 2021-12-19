@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerHealth : MonoBehaviour
 
     public HealthBar healthBar;
     public GameObject lowHpPostProcess;
+    public GameObject restartGame;
+    public GameObject restartButton;
 
     //Audio
     public AudioSource myAudioHeartBeat;
@@ -61,6 +64,9 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            Time.timeScale = 0;
+            restartButton.SetActive(true);
+            restartGame.GetComponent<TextMeshProUGUI>().enabled = true;
             Destroy(gameObject);
         }
     }
