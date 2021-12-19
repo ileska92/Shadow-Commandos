@@ -486,6 +486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8318861154447447923}
   - component: {fileID: 8318861154447447925}
+  - component: {fileID: 7422724490029527239}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -559,17 +560,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 8318861154303523387}
   m_HandleRect: {fileID: 8318861156013229638}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 0
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: ChangeVolume
-        m_Mode: 1
+      - m_Target: {fileID: 7422724490029527239}
+        m_TargetAssemblyTypeName: SetVolume, Assembly-CSharp
+        m_MethodName: SetLevel
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -578,6 +579,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7422724490029527239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8318861154447447922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d0577f43b2038448599054d345031c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: aae70768a2000e249952435dacddad5b, type: 2}
 --- !u!1 &8318861154500532733
 GameObject:
   m_ObjectHideFlags: 0
