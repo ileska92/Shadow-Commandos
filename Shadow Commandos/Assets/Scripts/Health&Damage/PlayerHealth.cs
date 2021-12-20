@@ -27,7 +27,8 @@ public class PlayerHealth : MonoBehaviour
         healthBar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        lowHpPostProcess.SetActive(false);
+        //lowHpPostProcess.SetActive(false);
+        StartCoroutine(Effect());
 
     }
 
@@ -76,5 +77,11 @@ public class PlayerHealth : MonoBehaviour
         currentHealth += healPoints;
         currentHealth = Mathf.Clamp(currentHealth, 0, 100);
         healthBar.SetHealth(currentHealth);
+    }
+
+    IEnumerator Effect()
+    {
+        yield return new WaitForSeconds(0.01f);
+        lowHpPostProcess.SetActive(false);
     }
 }
